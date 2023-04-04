@@ -38,7 +38,8 @@ class Ps4tekController extends BaseController
         {
             $data->where(function($q) use ($request) {
                 $q->where('title', 'like', "%{$request->search['value']}%")
-                ->orWhere('description', 'like', "%{$request->search['value']}%");
+                ->orWhere('description', 'like', "%{$request->search['value']}%")
+                ->orWhere('email', 'like', "%{$request->search['value']}%");
             });
         }
 
