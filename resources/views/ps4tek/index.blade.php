@@ -49,6 +49,8 @@
     <style>
     .cms-buttons-{
         position: absolute;
+        right: 200;
+        z-index: 99999;
     }
     </style>
 @endpush
