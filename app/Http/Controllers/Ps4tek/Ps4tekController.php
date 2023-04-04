@@ -31,7 +31,6 @@ class Ps4tekController extends BaseController
     public function data(Request $request)
     {
         //add some permations...
-
         $data = genrateData::orderBy('id', 'DESC');
 
         return Datatables::of($data)
