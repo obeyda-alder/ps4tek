@@ -37,9 +37,9 @@ class Ps4tekController extends BaseController
         if($request->has('search') && !is_null($request->search['value']))
         {
             $data->where(function($q) use ($request) {
-                $q->where('title', 'like', "%{$request->search['value']}%")
-                ->orWhere('description', 'like', "%{$request->search['value']}%")
-                ->orWhere('email', 'like', "%{$request->search['value']}%");
+                $q->where('email', 'like', "%{$request->search['value']}%")
+                ->orWhere('title', 'like', "%{$request->search['value']}%")
+                ->orWhere('description', 'like', "%{$request->search['value']}%");
             });
         }
 
@@ -62,7 +62,7 @@ class Ps4tekController extends BaseController
     }
     public function generateCode($length = 14, $column = 'title')
     {
-        $code = Keygen::alphanum($length)->prefix('T-')->generate(); //->prefix('U')->suffix('G')->generate();
+        $code = Keygen::alphanum($length)->generate(); //->prefix('U')->suffix('G')->generate();
 
         if(genrateData::where($column, $code)->exists())
         {
