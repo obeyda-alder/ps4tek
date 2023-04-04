@@ -44,6 +44,13 @@ class Ps4tekController extends BaseController
         }
 
         return Datatables::of($data)
+        ->filter(function ($query) use($request) {
+            $query->where(function($q) use ($request) {
+                $q->where('email', 'like', "%{$request->search['value']}%")
+                ->orWhere('title', 'like', "%{$request->search['value']}%")
+                ->orWhere('description', 'like', "%{$request->search['value']}%");
+            });
+        })
         ->addIndexColumn()
         ->addColumn('title', function ($mn_data) {
             return $mn_data->title ?? '';
